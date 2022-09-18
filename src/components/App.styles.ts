@@ -13,7 +13,6 @@ export const Header = styled.header`
   width: 100%;
   height: 80px;
   padding: 12px 24px;
-
   background-color: #282c34;
   display: flex;
   flex-direction: column;

@@ -10,7 +10,8 @@ export const LogoAnimation = keyframes`
 `;
 
 export const Container = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: calc(50% - 50px) 100px calc(50% - 50px);
   align-items: center;
   cursor: pointer;
 `;
