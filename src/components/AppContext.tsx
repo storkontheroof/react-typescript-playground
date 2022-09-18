@@ -1,19 +1,25 @@
-import React, { createContext, useContext, useState, Dispatch } from "react";
+import React, { createContext, useContext, useState, Dispatch, PropsWithChildren } from "react";
 
-interface ISelectedAccount {
+type SelectedAccount = {
   pos: string;
   accountItem: any;
 }
 
-interface IAppContextProps {
-  selectedAccounts: ISelectedAccount[];
-  setSelectedAccounts: Dispatch<ISelectedAccount[]>;
+type AppContextProps = {
+  selectedAccounts: SelectedAccount[];
+  setSelectedAccounts: Dispatch<SelectedAccount[]>;
 }
 
-const AppContext = createContext<IAppContextProps>(undefined);
+type AppContextProviderProps = PropsWithChildren<{}>
 
-const AppContextProvider = ({ children }) => {
-  const [selectedAccounts, setSelectedAccounts] = useState<ISelectedAccount[]>(
+const defaultProps:AppContextProps = {
+    selectedAccounts: [],
+    setSelectedAccounts: () => null
+}
+const AppContext = createContext<AppContextProps>(defaultProps);
+
+const AppContextProvider = ({ children }:AppContextProviderProps) => {
+  const [selectedAccounts, setSelectedAccounts] = useState<SelectedAccount[]>(
     []
   );
 
