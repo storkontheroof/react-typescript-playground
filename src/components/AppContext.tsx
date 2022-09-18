@@ -1,24 +1,31 @@
-import React, { createContext, useContext, useState, Dispatch, PropsWithChildren } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  Dispatch,
+  PropsWithChildren,
+} from "react";
 
 type SelectedAccount = {
   pos: string;
   accountItem: any;
-}
+};
 
 type AppContextProps = {
   selectedAccounts: SelectedAccount[];
   setSelectedAccounts: Dispatch<SelectedAccount[]>;
-}
+};
 
-type AppContextProviderProps = PropsWithChildren<{}>
+type AppContextProviderProps = PropsWithChildren<{}>;
 
-const defaultProps:AppContextProps = {
-    selectedAccounts: [],
-    setSelectedAccounts: () => null
-}
+const defaultProps: AppContextProps = {
+  selectedAccounts: [],
+  setSelectedAccounts: () => null,
+};
+
 const AppContext = createContext<AppContextProps>(defaultProps);
 
-const AppContextProvider = ({ children }:AppContextProviderProps) => {
+const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [selectedAccounts, setSelectedAccounts] = useState<SelectedAccount[]>(
     []
   );

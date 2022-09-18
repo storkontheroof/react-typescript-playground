@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <Styled.Container>
       React
-      <img src={logo} className="App-logo" alt="logo" />
+      <Styled.Logo src={logo} alt="logo" />
       Playground
     </Styled.Container>
   );

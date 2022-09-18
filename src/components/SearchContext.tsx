@@ -1,19 +1,32 @@
-import React, { createContext, useContext, useState, Dispatch } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  Dispatch,
+  PropsWithChildren,
+} from "react";
 
-interface ISearchResult {
+type SearchResult = {
   pos: string;
   accountItem: any;
-}
+};
 
-interface ISearchContextProps {
-  searchResults: ISearchResult[];
-  setSearchResults: Dispatch<ISearchResult[]>;
-}
+type SearchContextProps = {
+  searchResults: SearchResult[];
+  setSearchResults: Dispatch<SearchResult[]>;
+};
 
-const SearchContext = createContext<ISearchContextProps>(undefined);
+type SearchContextProviderProps = PropsWithChildren<{}>;
 
-const SearchContextProvider = ({ children }) => {
-  const [searchResults, setSearchResults] = useState<ISearchResult[]>([]);
+const defaultProps: SearchContextProps = {
+  searchResults: [],
+  setSearchResults: () => null,
+};
+
+const SearchContext = createContext<SearchContextProps>(defaultProps);
+
+const SearchContextProvider = ({ children }: SearchContextProviderProps) => {
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
 
   const value = { searchResults, setSearchResults };
   return (

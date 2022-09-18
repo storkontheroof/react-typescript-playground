@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
-import { theme } from "./theme/light-theme";
-import "./styles.css";
+import { theme } from "../theme/light-theme";
+import * as Styled from "./App.styles";
 
 import { Header } from "@components/header";
 import { Home } from "@features/home";
@@ -13,29 +13,25 @@ import { PromisesExample } from "@features/promises";
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <header className="App-header">
+      <Styled.App>
+        <Styled.Header>
           <Header />
-        </header>
-        <nav className="App-navbar">
-          <Link to="/" className="App-navbar-link">
-            Home
-          </Link>
-          <Link to="/promises" className="App-navbar-link">
-            Promises
-          </Link>
-          <Link to="/click-outside" className="App-navbar-link">
+        </Styled.Header>
+        <Styled.NavBar>
+          <Styled.NavBarLink to="/">Home</Styled.NavBarLink>
+          <Styled.NavBarLink to="/promises">Promises</Styled.NavBarLink>
+          <Styled.NavBarLink to="/click-outside">
             Click outside
-          </Link>
-        </nav>
-        <div className="App-content">
+          </Styled.NavBarLink>
+        </Styled.NavBar>
+        <Styled.Content>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/promises" element={<PromisesExample />} />
             <Route path="click-outside" element={<ClickOutsideExample />} />
           </Routes>
-        </div>
-      </div>
+        </Styled.Content>
+      </Styled.App>
     </ThemeProvider>
   );
 }
