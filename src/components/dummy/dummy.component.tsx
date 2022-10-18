@@ -1,17 +1,17 @@
-import React, {useRef, useEffect} from 'react'
+import React, { useRef, useEffect } from "react";
+import { useAccountContext } from "@contexts/account.context";
 
 export const Dummy = () => {
-  const ref = useRef("ABC");
+  const id = useRef(0);
+  const { state } = useAccountContext();
 
   useEffect(() => {
-    console.log({ ref });
-    ref.current = "DEF";
-  }, []);
+    id.current = id.current + 1;
+  }, [state]);
 
   return (
-    <div>
-      <h3>Component A</h3>
-      <p>{ref.current}</p>
-    </div>
+    <>
+      <p>ID: {id.current}</p>
+    </>
   );
-}
+};
